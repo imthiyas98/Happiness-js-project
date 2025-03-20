@@ -1,6 +1,7 @@
 const material = document.getElementById("Materials");
 const rate = document.getElementById("rate");
 const item = document.getElementById("item");
+const quality = document.getElementById("quality")
 const addButton = document.getElementById("submit-button");
 
 const sandorder = document.getElementById("sandOrder");
@@ -17,6 +18,7 @@ function onSubmit(e) {
 
     const materialValue = material.value.trim();
     const rateValue = rate.value.trim();
+    const qualityvalue=quality.value.trim();
     const itemType = item.value;
 
     if (materialValue === "" || rateValue === "") {
@@ -48,7 +50,8 @@ function onSubmit(e) {
     const newEntry = {
         no: rowCount,
         name: materialValue,
-        rate: rateValue
+        rate: rateValue,
+        quality:qualityvalue
     };
 
     // Add new entry to stored data
@@ -70,6 +73,7 @@ function addRowToTable(targetTable, entry) {
         <td>${entry.no}</td>
         <td>${entry.name}</td>
         <td>${entry.rate}</td>
+        <td>${entry.quality}</td>
     `;
     targetTable.appendChild(tr);
 }
