@@ -1,42 +1,90 @@
-const material= document.getElementById("Materials")
-const rate= document.getElementById("rate")
-const item =document.getElementById("item")
-const addButton=document.getElementById("submit-button")
+const material = document.getElementById("Materials");
+const rate = document.getElementById("rate");
+const item = document.getElementById("item");
+const addButton = document.getElementById("submit-button");
 
-const sandorder= document.getElementById("sandOrder")
-const metalsorder= document.getElementById("MetalsOrder")
-const othermaterialsorder=document.getElementById("OtherMaterialsOrder")
-const Materials = [
-    { material: "Sand", rate: 50, item: "1" },
-    { material: "Metal", rate: 100, item: "2" },
-    { material: "Cement", rate: 75, item: "3" }
-];
+const sandorder = document.getElementById("sandOrder");
+const metalsorder = document.getElementById("MetalsOrder");
+const othermaterialsorder = document.getElementById("OtherMaterialsOrder");
 
-addButton.addEventListener("click",onSubmit)
-function onSubmit(e){
-    e.preventDefault()
-    const tr=document.createElement("tr")
-        
-       const text=`
-                    <td>1</td>
-                    <td>${material.value}</td>
-                    <td>${rate.value}</td>
-                 `
-        tr.innerHTML=text
-    if (item.value=="1"){
-        
-        sandorder.appendChild(tr)
+// Load stored data when the page loads
+document.addEventListener("DOMContentLoaded", loadStoredData);
 
+addButton.addEventListener("click", onSubmit);
 
+function onSubmit(e) {
+    e.preventDefault();
+
+    const materialValue = material.value.trim();
+    const rateValue = rate.value.trim();
+    const itemType = item.value;
+
+    if (materialValue === "" || rateValue === "") {
+        alert("Please enter both material name and rate.");
+        return;
     }
-    else if(item.value=="2"){
-        metalsorder.appendChild(tr)
-    }
-    else {
-        othermaterialsorder.appendChild(tr)
-    }
-    material.value=''
-    rate.value=''
 
+    // Determine the target table
+    let targetTable;
+    let storageKey;
+    if (itemType == "1") {
+        targetTable = sandorder;
+        storageKey = "sandOrders";
+    } else if (itemType == "2") {
+        targetTable = metalsorder;
+        storageKey = "metalOrders";
+    } else {
+        targetTable = othermaterialsorder;
+        storageKey = "otherMaterialsOrders";
+    }
 
+    // Get stored data
+    let storedData = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+    // Get the new row number
+    let rowCount = storedData.length + 1;
+
+    // Create a new entry object
+    const newEntry = {
+        no: rowCount,
+        name: materialValue,
+        rate: rateValue
+    };
+
+    // Add new entry to stored data
+    storedData.push(newEntry);
+    localStorage.setItem(storageKey, JSON.stringify(storedData));
+
+    // Add entry to the table
+    addRowToTable(targetTable, newEntry);
+
+    // Clear input fields
+    material.value = "";
+    rate.value = "";
+}
+
+// Function to add a row to the given table
+function addRowToTable(targetTable, entry) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${entry.no}</td>
+        <td>${entry.name}</td>
+        <td>${entry.rate}</td>
+    `;
+    targetTable.appendChild(tr);
+}
+
+// Function to load stored data when the page loads
+function loadStoredData() {
+    loadTableData("sandOrders", sandorder);
+    loadTableData("metalOrders", metalsorder);
+    loadTableData("otherMaterialsOrders", othermaterialsorder);
+}
+
+// Function to load table data from localStorage
+function loadTableData(storageKey, targetTable) {
+    let storedData = JSON.parse(localStorage.getItem(storageKey)) || [];
+    storedData.forEach(entry => {
+        addRowToTable(targetTable, entry);
+    });
 }
