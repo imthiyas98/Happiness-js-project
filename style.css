@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c6aeae;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 10% auto;
+}
+
+header {
+    background-color: rgba(42, 96, 132, 0.934);
+    color: rgb(218, 229, 180);
+    padding: 30px;
+    border-radius: 3px;
+}
+
+.form-container {
+    background: rgb(240, 234, 234);
+    padding: 30px;
+    margin: auto;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px rgb(170, 159, 159);
+    padding-bottom: 50px;
+
+}
+
+.form-group {
+    display: -moz-deck;
+    align-items: center;
+    margin: 10px 0;
+    
+}
+
+.form-group label {
+    width: 20%;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-group input, 
+.form-group select {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+.add-btn {
+    width: 50%;
+    padding: 10px;
+    background: rgb(112, 4, 114);
+    color: rgb(208, 211, 148);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: rgb(43, 111, 43);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+table th, table td {
+    border: 1px solid #1b1616;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #88a6a6;
+    color: rgb(13, 11, 11);
+}

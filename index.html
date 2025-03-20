@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>HAPPINESS MATERIALS ORDER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HAPPINESS MATERIALS ORDER TRACKER</h1>
+            <p>Copyright @Mohammed Imthiyas</p>
+        </header>
+        <div class="form-container">
+            <form id="Order">
+                <div class="form-group">
+                    <label for="Materials">Enter Materials:</label>
+                    <input type="text" id="Materials" required placeholder="Enter Materials name">
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate</label>
+                    <input type="number" id="rate" required placeholder="Enter amount">
+                </div>
+                <div class="form-group">
+                    <label for="item">Choose a item:</label>
+                    <select id="item">
+                        <option value="1">Sand</option>
+                        <option value="2">Metals</option>
+                        <option value="3">Other Materials</option>
+                    </select>
+                    
+                </div>
+                <button type="submit" id="submit-button" class="add-btn">Add Items</button>
+            </form>
+        </div>
+    </div>
+    <h2><strong>Order Detailes</strong></h2>
+    <br>
+    <br>
+    <h2>Sand</h2>
+    <img src="M-Sand.jpeg" width="300" height="200" alt="sand img">
+    <table border="2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Rate</th>
+               
+            </tr>
+        </thead>
+        <tbody id="sandOrder">
+            
+
+        </tbody>
+    </table>
+    <h2>Metals</h2>
+    <img src="20mm-.webp" width="300" height="200" alt="stone metals img">
+    <table border="2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody id="MetalsOrder">
+
+        </tbody>
+    </table>
+    <h2>Other Materials</h2>
+    <img src="images.jpg" width="300" height="200" alt="Materials img">
+    <table border="2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody id="OtherMaterialsOrder">
+
+        </tbody>
+    </table>
+    <script src="prjct.js"></script>
+
+</body>
+</html>
