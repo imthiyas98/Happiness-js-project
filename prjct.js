@@ -25,6 +25,7 @@ function onSubmit(e) {
         alert("Please enter both material name and rate.");
         return;
     }
+    
 
     // Determine the target table
     let targetTable;
@@ -64,6 +65,9 @@ function onSubmit(e) {
     // Clear input fields
     material.value = "";
     rate.value = "";
+    quality.value=""
+    item.value=""
+
 }
 
 // Function to add a row to the given table
